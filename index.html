@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ants: Skylines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="resource-bar">
+        <div class="resource-item">🐜 <span id="ant-count">10</span>/<span id="max-ants">20</span> Formiche</div>
+        <div class="resource-item">🍂 <span id="food-count">150</span> Cibo</div>
+        <div class="resource-item">🪵 <span id="wood-count">50</span> Materiali</div>
+        <div class="resource-item">🧪 <span id="science-count">0</span> Feromoni</div>
+        <div class="resource-item text-danger">⚠️ Minaccia: <span id="threat-level">0%</span></div>
+    </header>
+
+    <main class="game-container">
+        <section class="grid-viewport">
+            <div class="grid" id="colony-grid"></div>
+        </section>
+
+        <aside class="control-panel">
+            <h2>Pannello di Controllo</h2>
+            <p class="subtitle">Gestisci il formicaio</p>
+            <hr>
+
+            <div class="section">
+                <h3>Costruisci Camere</h3>
+                <div class="btn-group">
+                    <button class="btn btn-build" data-type="nest" title="Aumenta lo spazio per la popolazione">
+                        🕳️ Nido (+10 Spazio)<br><small>Costo: 30 Cibo, 20 Mat.</small>
+                    </button>
+                    <button class="btn btn-build" data-type="storage" title="Consente di accumulare più cibo e materiali">
+                        📦 Deposito (+Cibo/Mat max)<br><small>Costo: 40 Mat.</small>
+                    </button>
+                    <button class="btn btn-build" data-type="nursery" title="Genera automaticamente nuove formiche nel tempo">
+                        🥚 Vivaio (Genera Formiche)<br><small>Costo: 50 Cibo, 50 Mat.</small>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Assegnazione Lavori</h3>
+                <div class="job-controls">
+                    <div class="job-row">
+                        <span>🍂 Esploratrici (Cibo): <strong id="job-foragers">2</strong></span>
+                        <div>
+                            <button class="btn btn-sm btn-job" data-job="foragers" data-action="sub">-</button>
+                            <button class="btn btn-sm btn-job" data-job="foragers" data-action="add">+</button>
+                        </div>
+                    </div>
+                    <div class="job-row">
+                        <span>🪓 Operaie (Materiali): <strong id="job-builders">2</strong></span>
+                        <div>
+                            <button class="btn btn-sm btn-job" data-job="builders" data-action="sub">-</button>
+                            <button class="btn btn-sm btn-job" data-job="builders" data-action="add">+</button>
+                        </div>
+                    </div>
+                    <div class="job-row">
+                        <span>⚔️ Soldati (Difesa): <strong id="job-soldiers">1</strong></span>
+                        <div>
+                            <button class="btn btn-sm btn-job" data-job="soldiers" data-action="sub">-</button>
+                            <button class="btn btn-sm btn-job" data-job="soldiers" data-action="add">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Eventi e Cronologia</h3>
+                <div id="log-box" class="log-box">
+                    <div class="log-entry system">La regina ha fondato la colonia. Sviluppa il formicaio!</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="simulation.js"></script>
+    <script src="ui.js"></script>
+</body>
+</html>
