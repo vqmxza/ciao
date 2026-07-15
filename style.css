@@ -1,0 +1,234 @@
+:root {
+    --bg-color: #121212;
+    --panel-bg: #1e1e1e;
+    --accent-color: #D27026;
+    --text-color: #e0e0e0;
+    --border-color: #333333;
+    --danger-color: #cf6679;
+    --grid-bg: #1a1512;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra delle Risorse superiore */
+.resource-bar {
+    background-color: var(--panel-bg);
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+/* Layout Principale */
+.game-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Area Mappa/Griglia */
+.grid-viewport {
+    flex: 1;
+    background-color: var(--grid-bg);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 90px);
+    grid-template-rows: repeat(6, 90px);
+    gap: 8px;
+    background-color: #2c1e15;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Singola Cella/Camera */
+.cell {
+    background-color: #3e2a1d;
+    border: 1px solid #4a3222;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    position: relative;
+}
+
+.cell:hover {
+    background-color: #4e3524;
+    transform: scale(1.03);
+}
+
+.cell.nest { background-color: #5c3c25; border-color: var(--accent-color); }
+.cell.storage { background-color: #2b4c3f; border-color: #438a6a; }
+.cell.nursery { background-color: #5d2b4a; border-color: #924575; }
+
+.cell-icon {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.cell-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ccc;
+}
+
+/* Pannello Laterale */
+.control-panel {
+    width: 380px;
+    background-color: var(--panel-bg);
+    border-left: 2px solid var(--border-color);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: -5px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.section h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #bbb;
+}
+
+/* Pulsanti */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: left;
+    transition: background-color 0.15s;
+}
+
+.btn:hover {
+    background-color: #3a3a3a;
+    border-color: var(--accent-color);
+}
+
+.btn small {
+    font-weight: 400;
+    color: #888;
+}
+
+.btn.active {
+    border-color: var(--accent-color);
+    background-color: #352316;
+}
+
+/* Controlli dei Lavori */
+.job-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.job-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252525;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* Log di Gioco */
+.log-box {
+    background-color: #151515;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    height: 140px;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.log-entry {
+    color: #aaa;
+}
+
+.log-entry.system { color: #888; font-style: italic; }
+.log-entry.war { color: var(--danger-color); font-weight: 600; }
+.log-entry.success { color: #5cb85c; }
